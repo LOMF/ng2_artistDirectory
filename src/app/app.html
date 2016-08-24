@@ -1,1 +1,18 @@
-<p>Angular 2 is running!</p>
+<div class="artistsearch">
+    <div class="card search">
+        <h1>Artist directory</h1>
+        <label>Search <span *ngIf="query">for: {{query}}</span></label>
+        <input [(ngModel)]="query" placeholder="type in search term">
+        <!--<input #newArtistName [(ngModel)]="name" (keyup.enter)="newArtistSchool.focus()">-->
+        <!--<input #newArtistSchool [(ngModel)]="school" (keyup.enter)="addArtist(newArtistName.value,newArtistSchool.value)">-->
+        <!--<button class="btn" (click)="addArtist(newArtistName.value,newArtistSchool.value); newArtistSchool.value=''; newArtistName.value='';">add</button>-->
+    </div>
+</div>
+
+<ul class="artistlist cf" *ngIf="query">
+    <li class="artist cf" #artistContainer (click)="showArtist(item); query=''" *ngFor="let item of (artists) | find:query">
+        <artist-item class="content" [artist]=item></artist-item>
+    </li>
+</ul>
+
+<artist-details *ngIf="currentArtist" [artist]="currentArtist"></artist-details>

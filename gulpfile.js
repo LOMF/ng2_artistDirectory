@@ -23,7 +23,7 @@ gulp.task("compile", () => {
     return tsResult.js
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest("build"));
-});
+}); 
 
 /**
  * Copy all resources that are not TypeScript files into build directory.
